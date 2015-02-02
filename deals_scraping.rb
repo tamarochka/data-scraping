@@ -1,6 +1,7 @@
 require 'mechanize'
 require "csv"
 require "pry"
+deal_name = "Hair"
 
 url = "https://www.livingsocial.com/cities/2-boston"
 @deal_titles = []
@@ -16,3 +17,6 @@ File.open("deals.txt", "a") do |i|
     i.write(link)
 	end
 end
+
+@selected_deals = @deal_titles.select { |h| h[:name].split.include?(deal_name) }
+puts @selected_deals
